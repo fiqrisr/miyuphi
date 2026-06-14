@@ -2,22 +2,23 @@
 
 ## Project
 
-Single-page portfolio/pricing site for a freelance video editor. Astro + Tailwind CSS v4 + TypeScript, package-managed with Bun.
+Single-page portfolio/pricing site for a freelance video editor. Astro + Tailwind CSS v4 + TypeScript, package-managed with pnpm.
 
 ## Commands
 
-- `bun install` — install dependencies
-- `bun run dev` — start dev server
-- `bun run build` — static production build
-- `bun run preview` — preview production build
-- `bun run astro check` — typecheck + diagnostics
+- `pnpm install` — install dependencies
+- `pnpm run dev` — start dev server
+- `pnpm run build` — static production build
+- `pnpm run preview` — preview production build
+- `pnpm run astro check` — typecheck + diagnostics
 
-## Structure
+## Structure & Conventions
 
+- **Naming Style:** ALL files and directories must use `kebab-case` strictly (e.g., `order-flow.astro`, `pricing-tier.astro`). _Agent Note: When importing these kebab-case Astro components in the frontmatter, you must still alias or import them as PascalCase variables (e.g., `import OrderFlow from './order-flow.astro';`)._
 - `src/pages/index.astro` — sole landing page with smooth-scroll sections
-- `src/components/` — section components (Navbar, Hero, About, OrderFlow, PricingTier, PortfolioGallery, Footer)
-- `src/layouts/Layout.astro` — base HTML shell, SEO metadata, global Tailwind v4 import
-- `src/data/` — pricing tiers and portfolio links; keep content separate from UI
+- `src/components/` — section components (`navbar.astro`, `hero.astro`, `about.astro`, `order-flow.astro`, `pricing-tier.astro`, `portfolio-gallery.astro`, `footer.astro`)
+- `src/layouts/layout.astro` — base HTML shell, SEO metadata, global Tailwind v4 import
+- `src/data/` — pricing tiers and portfolio links; keep content separate from UI (e.g., `content.ts`)
 - `public/assets/` — static images, profile picture, portfolio thumbnails (manually exported from source PDF)
 
 ## Toolchain gotchas
@@ -28,4 +29,4 @@ Single-page portfolio/pricing site for a freelance video editor. Astro + Tailwin
 
 ## Content source
 
-Full website copy, order flow, and pricing details should live in `src/data/` (e.g. `content.ts` / `data.json`) and be imported by components. Do not hardcode long copy blocks directly in `.astro` files.
+Full website copy, order flow, and pricing details should live in `src/data/` and be imported by components. Do not hardcode long copy blocks directly in `.astro` files.
