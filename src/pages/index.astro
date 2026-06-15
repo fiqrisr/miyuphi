@@ -1,33 +1,28 @@
 ---
 import Layout from "../layouts/layout.astro";
-import FloatingBackground from "../components/floating-background.astro";
-import Navbar from "../components/navbar.astro";
-import Hero from "../components/hero.astro";
-import About from "../components/about.astro";
+import ParallaxBackground from "../partials/parallax-background.astro";
+import Navbar from "../partials/navbar.astro";
+import Hero from "../partials/hero.astro";
+import About from "../partials/about.astro";
 import OrderFlow from "../partials/order-flow.astro";
-import Pricing from "../partials/pricing.astro";
+import PricingTier from "../partials/pricing-tier.astro";
+import ContactSection from "../partials/contact-section.astro";
 import Footer from "../partials/footer.astro";
 import { siteContent } from "../data/content.ts";
 
-const { meta, hero, about, orderFlow, pricing, footer } = siteContent;
+const { meta, hero, about, orderFlow, pricing, contact, footer } = siteContent;
 ---
 
 <Layout title={meta.title} description={meta.description}>
-  <FloatingBackground />
+  <ParallaxBackground />
   <Navbar />
 
   <main class="relative z-10">
     <Hero content={hero} />
     <About content={about} />
-
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <OrderFlow heading={orderFlow.heading} steps={orderFlow.steps} />
-      <Pricing
-        heading={pricing.heading}
-        tiers={pricing.tiers}
-        bookingHref={about.contacts[2].href}
-      />
-      <Footer message={footer.message} name={hero.title} />
-    </div>
+    <OrderFlow content={orderFlow} />
+    <PricingTier content={pricing} />
+    <ContactSection content={contact} />
+    <Footer name={footer.name} />
   </main>
 </Layout>

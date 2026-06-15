@@ -16,7 +16,8 @@ Single-page portfolio/pricing site for a freelance video editor. Astro + Tailwin
 
 - **Naming Style:** ALL files and directories must use `kebab-case` strictly (e.g., `order-flow.astro`, `pricing-tier.astro`). _Agent Note: When importing these kebab-case Astro components in the frontmatter, you must still alias or import them as PascalCase variables (e.g., `import OrderFlow from './order-flow.astro';`)._
 - `src/pages/index.astro` — sole landing page with smooth-scroll sections
-- `src/components/` — section components (`navbar.astro`, `hero.astro`, `about.astro`, `order-flow.astro`, `pricing-tier.astro`, `portfolio-gallery.astro`, `footer.astro`)
+- `src/components/` — reusable UI components (`button.astro`, `badge.astro`, `card.astro`, etc.)
+- `src/partials/` — page section / layout partials composed of smaller components (`navbar.astro`, `hero.astro`, `about.astro`, `order-flow.astro`, `pricing-tier.astro`, `contact-section.astro`, `footer.astro`, `parallax-background.astro`)
 - `src/layouts/layout.astro` — base HTML shell, SEO metadata, global Tailwind v4 import
 - `src/data/` — pricing tiers and portfolio links; keep content separate from UI (e.g., `content.ts`)
 - `public/assets/` — static images, profile picture, portfolio thumbnails (manually exported from source PDF)
@@ -29,4 +30,4 @@ Single-page portfolio/pricing site for a freelance video editor. Astro + Tailwin
 
 ## Content source
 
-Full website copy, order flow, and pricing details should live in `src/data/` and be imported by components. Do not hardcode long copy blocks directly in `.astro` files.
+Full website copy, order flow, and pricing details should live in `src/data/` and be imported by partials or reusable components. Do not hardcode long copy blocks directly in `.astro` files.

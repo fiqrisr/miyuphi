@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* Cinnamoroll-inspired palette */
   --color-sky-soft: #e5f1fb;
   --color-cloud-white: #ffffff;
   --color-navy-deep: #1e2a4a;
@@ -10,73 +9,135 @@
   --color-yellow-soft: #fff4bd;
   --color-blue-pale: #d6ecff;
 
-  /* Semantic aliases */
-  --color-surface: var(--color-cloud-white);
+  --color-background: #e5f1fb;
+  --color-foreground: #1e2a4a;
+  --color-surface: #ffffff;
+  --color-muted: #334155;
+  --color-muted-foreground: #64748b;
+  --color-primary: #fad2e1;
+  --color-primary-foreground: #1e2a4a;
+  --color-secondary: #fff4bd;
+  --color-secondary-foreground: #1e2a4a;
+  --color-accent: #d6ecff;
+  --color-accent-foreground: #1e2a4a;
+  --color-border: rgba(30, 42, 74, 0.08);
+  --color-card: #ffffff;
+  --color-card-foreground: #1e2a4a;
+  --color-ring: #fad2e1;
+  --color-input: rgba(30, 42, 74, 0.12);
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1e2a4a;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
   --color-surface-glass: rgb(255 255 255 / 72%);
-  --color-background: var(--color-sky-soft);
-  --color-foreground: var(--color-navy-deep);
-  --color-muted: var(--color-text-soft);
-  --color-primary: var(--color-pink-pastel);
-  --color-secondary: var(--color-yellow-soft);
-  --color-accent: var(--color-blue-pale);
 
-  /* Typography */
   --font-sans: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Varela Round", ui-rounded, "Nunito Sans", sans-serif;
 
-  /* Shadows */
   --shadow-soft: 0 8px 32px -8px rgb(30 58 138 / 12%);
   --shadow-card: 0 4px 24px -4px rgb(30 58 138 / 10%);
 
-  /* Animations */
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-float-slow: float 8s ease-in-out infinite;
-  --animate-float-delayed: float 7s ease-in-out infinite 1s;
-  --animate-drift: drift 20s linear infinite;
+  --radius-lg: 1.5rem;
 }
 
-@keyframes float {
+@keyframes float-slow {
   0%,
   100% {
-    translate: 0 0;
+    transform: translateY(0px) rotate(0deg);
   }
   50% {
-    translate: 0 -16px;
+    transform: translateY(-24px) rotate(3deg);
+  }
+}
+
+@keyframes float-mid {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(-4deg);
   }
 }
 
 @keyframes drift {
   0% {
-    translate: -5% 0;
+    transform: translateX(-10px);
   }
   50% {
-    translate: 5% 0;
+    transform: translateX(10px);
   }
   100% {
-    translate: -5% 0;
+    transform: translateX(-10px);
   }
 }
 
-html {
-  scroll-behavior: smooth;
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-body {
-  font-family: var(--font-sans);
-  color: var(--color-foreground);
-  background: linear-gradient(
-    180deg,
-    var(--color-sky-soft) 0%,
-    var(--color-cloud-white) 50%,
-    var(--color-sky-soft) 100%
-  );
-  background-attachment: fixed;
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: linear-gradient(
+      180deg,
+      #e5f1fb 0%,
+      #d6ecff 50%,
+      #fad2e1 100%
+    );
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
 }
 
-/* Reduced motion: disable decorative animations */
+.glass {
+  background: rgb(255 255 255 / 72%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgb(255 255 255 / 60%);
+  box-shadow: var(--shadow-card);
+}
+
+.float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.float-mid {
+  animation: float-mid 5s ease-in-out infinite;
+}
+
+.drift {
+  animation: drift 9s ease-in-out infinite;
+}
+
+.fade-up {
+  animation: fade-up 0.8s ease-out both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

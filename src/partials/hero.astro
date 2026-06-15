@@ -1,37 +1,91 @@
 ---
-import type { HeroContent } from "../data/content.ts";
+import type { SiteContent } from "../data/content.ts";
 
 interface Props {
-  readonly content: HeroContent;
+  readonly content: SiteContent["hero"];
 }
 
 const { content } = Astro.props;
 ---
 
 <section
-  id="hero"
-  class="flex min-h-[70vh] flex-col items-center justify-center text-center"
+  id="home"
+  class="flex min-h-[90vh] items-center justify-center px-6 pb-24 pt-12"
 >
-  <div
-    class="rounded-3xl border border-white/50 bg-surface-glass p-8 shadow-soft backdrop-blur-xl sm:p-12"
-  >
-    <p class="mb-3 text-lg font-medium text-muted sm:text-xl">
-      {content.greeting}
-    </p>
-    <h1 class="font-display text-4xl font-bold text-foreground sm:text-6xl">
-      {content.title}
-    </h1>
-    <p
-      class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
-    >
-      Freelance video editor crafting engaging visual stories for Beauty, F&B,
-      and Lifestyle content.
-    </p>
-    <a
-      href="#pricing"
-      class="mt-8 inline-flex items-center justify-center rounded-full bg-pink-pastel px-8 py-3 font-semibold text-navy-deep shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:bg-pink-200 hover:shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-deep focus-visible:ring-offset-2"
-    >
-      View Pricelist
-    </a>
+  <div class="grid w-full max-w-6xl items-center gap-12 md:grid-cols-2">
+    <div class="parallax-hero-text fade-up">
+      <p class="font-display mb-4 text-sm tracking-widest text-muted">
+        {content.subtitle}
+      </p>
+      <h1
+        class="font-display text-6xl leading-[0.95] text-foreground md:text-8xl"
+      >
+        {content.title}<br />
+        <span
+          class="mt-2 inline-block rounded-3xl bg-pink-pastel px-4 py-1"
+          >{content.highlight}</span
+        >
+      </h1>
+      <p class="mt-6 max-w-md text-lg text-muted">
+        {content.description}
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="#pricelist"
+          class="shadow-soft rounded-full bg-foreground px-6 py-3 font-bold text-background transition hover:scale-105"
+        >
+          See Pricelist
+        </a>
+        <a
+          href="#contact"
+          class="glass rounded-full px-6 py-3 font-bold text-foreground transition hover:scale-105"
+        >
+          Say Hi ♡
+        </a>
+      </div>
+    </div>
+
+    <div class="parallax-hero-image relative flex justify-center">
+      <div class="absolute inset-0 rounded-full bg-pink-pastel/40 blur-3xl"></div>
+      <img
+        src="/assets/hero-photo-placeholder.svg"
+        alt="Photo placeholder"
+        class="float-slow relative w-full max-w-md drop-shadow-2xl"
+        width="400"
+        height="400"
+      />
+    </div>
   </div>
 </section>
+
+<script>
+  (function initHeroParallax() {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReducedMotion) return;
+
+    const text = document.querySelector<HTMLElement>(".parallax-hero-text");
+    const image = document.querySelector<HTMLElement>(".parallax-hero-image");
+    if (!text && !image) return;
+
+    let ticking = false;
+
+    function update() {
+      const y = window.scrollY;
+      if (text) text.style.transform = `translateY(${y * -0.1}px)`;
+      if (image) image.style.transform = `translateY(${y * 0.15}px)`;
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+  })();
+</script>

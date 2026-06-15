@@ -1,46 +1,47 @@
 ---
-import type { AboutContent } from "../data/content.ts";
+import type { SiteContent } from "../data/content.ts";
 
 interface Props {
-  readonly content: AboutContent;
+  readonly content: SiteContent["about"];
 }
 
 const { content } = Astro.props;
 ---
 
-<section id="about" class="py-16 sm:py-24">
-  <div
-    class="rounded-3xl border border-white/50 bg-surface-glass p-8 shadow-card backdrop-blur-xl sm:p-12"
-  >
-    <h2 class="font-display text-3xl font-bold text-foreground sm:text-4xl">
+<section id="about" class="px-6 py-24">
+  <div class="glass mx-auto max-w-4xl rounded-[2.5rem] p-10 md:p-16">
+    <p class="font-display mb-4 text-sm tracking-widest text-muted">
       {content.heading}
-    </h2>
-    <div class="mt-6 space-y-4 text-base leading-relaxed text-muted sm:text-lg">
-      {content.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-    </div>
+    </p>
+    <h2 class="font-display mb-6 text-5xl md:text-6xl">Hello, I'm Miyu!</h2>
 
-    <ul class="mt-8 space-y-3">
+    <p class="text-lg leading-relaxed text-muted">
+      Hello, Yuphi here! I am a passionate Video Editor dedicated to turning
+      your raw footage into engaging and dynamic visual stories. With a strong
+      eye for detail and aesthetics, I specialize in editing for the
+      <span class="rounded bg-yellow-soft px-2">Beauty</span>,
+      <span class="rounded bg-pink-pastel px-2">F&B</span>, and
+      <span class="rounded bg-blue-pale px-2">Lifestyle</span>
+      niches — including bilingual content and K-vibe / Japanese aesthetics.
+    </p>
+
+    <p class="mt-4 text-lg leading-relaxed text-muted">
+      My goal is to help creators and brands capture their audience's attention
+      through good pacing, the right audio choices, and creative storytelling.
+      Let's bring your vision to life! ✨
+    </p>
+
+    <div class="mt-8 flex flex-wrap gap-4 text-sm font-semibold text-foreground">
       {
         content.contacts.map((contact) => (
-          <li class="flex flex-col sm:flex-row sm:items-center sm:gap-3">
-            <span class="text-sm font-semibold uppercase tracking-wide text-navy-deep/70">
-              {contact.label}
-            </span>
-            <a
-              href={contact.href}
-              target={contact.href.startsWith("http") ? "_blank" : undefined}
-              rel={
-                contact.href.startsWith("http")
-                  ? "noopener noreferrer"
-                  : undefined
-              }
-              class="text-base text-foreground underline decoration-pink-pastel decoration-2 underline-offset-4 transition-colors hover:text-pink-400"
-            >
-              {contact.value}
-            </a>
-          </li>
+          <span class="glass rounded-full px-4 py-2">
+            {contact.label === "Email" && "✉ "}
+            {contact.label === "Phone" && "✆ "}
+            {contact.label === "Instagram" && "@"}
+            {contact.value}
+          </span>
         ))
       }
-    </ul>
+    </div>
   </div>
 </section>
