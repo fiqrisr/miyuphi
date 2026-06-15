@@ -1,11 +1,33 @@
 ---
-import Welcome from "../components/Welcome.astro";
-import Layout from "../layouts/Layout.astro";
+import Layout from "../layouts/layout.astro";
+import FloatingBackground from "../components/floating-background.astro";
+import Navbar from "../components/navbar.astro";
+import Hero from "../components/hero.astro";
+import About from "../components/about.astro";
+import OrderFlow from "../partials/order-flow.astro";
+import Pricing from "../partials/pricing.astro";
+import Footer from "../partials/footer.astro";
+import { siteContent } from "../data/content.ts";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const { meta, hero, about, orderFlow, pricing, footer } = siteContent;
 ---
 
-<Layout>
-  <Welcome />
+<Layout title={meta.title} description={meta.description}>
+  <FloatingBackground />
+  <Navbar />
+
+  <main class="relative z-10">
+    <Hero content={hero} />
+    <About content={about} />
+
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <OrderFlow heading={orderFlow.heading} steps={orderFlow.steps} />
+      <Pricing
+        heading={pricing.heading}
+        tiers={pricing.tiers}
+        bookingHref={about.contacts[2].href}
+      />
+      <Footer message={footer.message} name={hero.title} />
+    </div>
+  </main>
 </Layout>

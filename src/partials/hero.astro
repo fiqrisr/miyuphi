@@ -1,0 +1,37 @@
+---
+import type { HeroContent } from "../data/content.ts";
+
+interface Props {
+  readonly content: HeroContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section
+  id="hero"
+  class="flex min-h-[70vh] flex-col items-center justify-center text-center"
+>
+  <div
+    class="rounded-3xl border border-white/50 bg-surface-glass p-8 shadow-soft backdrop-blur-xl sm:p-12"
+  >
+    <p class="mb-3 text-lg font-medium text-muted sm:text-xl">
+      {content.greeting}
+    </p>
+    <h1 class="font-display text-4xl font-bold text-foreground sm:text-6xl">
+      {content.title}
+    </h1>
+    <p
+      class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+    >
+      Freelance video editor crafting engaging visual stories for Beauty, F&B,
+      and Lifestyle content.
+    </p>
+    <a
+      href="#pricing"
+      class="mt-8 inline-flex items-center justify-center rounded-full bg-pink-pastel px-8 py-3 font-semibold text-navy-deep shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:bg-pink-200 hover:shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-deep focus-visible:ring-offset-2"
+    >
+      View Pricelist
+    </a>
+  </div>
+</section>

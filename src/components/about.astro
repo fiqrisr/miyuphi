@@ -1,0 +1,110 @@
+---
+import type { AboutContent } from "../data/content.ts";
+import EmailIcon from "./icons/email-icon.astro";
+import WhatsAppIcon from "./icons/whatsapp-icon.astro";
+import InstagramIcon from "./icons/instagram-icon.astro";
+import TikTokIcon from "./icons/tiktok-icon.astro";
+
+interface Props {
+  readonly content: AboutContent;
+}
+
+const { content } = Astro.props;
+
+const normalizedContactLabels: Record<string, string> = {
+  "Instagram / TikTok": "Instagram",
+  WhatsApp: "WhatsApp",
+  Email: "Email",
+};
+---
+
+<section
+  id="about"
+  class="relative grid min-h-screen grid-cols-1 items-stretch gap-8 px-4 py-24 sm:px-6 lg:grid-cols-2 lg:px-8"
+>
+  <!-- Left column: massive headline + cutout image -->
+  <div class="relative flex flex-col justify-between overflow-visible">
+    <h2
+      class="font-display text-6xl font-black leading-[0.9] tracking-tighter text-navy-deep sm:text-7xl lg:text-8xl xl:text-9xl"
+    >
+      <span class="block">Hello,</span>
+      <span class="block text-pink-pastel">I'm Miyu!</span>
+    </h2>
+
+    <!-- Cutout placeholder anchored bottom-left, overflowing section -->
+    <div
+      class="relative mt-12 h-80 w-64 self-start sm:h-96 sm:w-72 lg:absolute lg:-bottom-24 lg:left-0 lg:mt-0"
+    >
+      <div
+        class="h-full w-full overflow-hidden rounded-t-[3rem] rounded-b-none border-4 border-white/60 bg-gradient-to-t from-yellow-soft to-pink-pastel shadow-soft"
+      >
+        <img
+          src="/assets/about-cutout-placeholder.svg"
+          alt="Shimazaki Miyu full body cutout"
+          class="h-full w-full object-cover object-top"
+          onerror="this.style.display='none'"
+        />
+        <div
+          class="absolute inset-0 flex items-center justify-center text-center text-navy-deep/40"
+          id="about-placeholder-label"
+        >
+          <span class="font-display text-lg font-bold">Cutout Image</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right column: description + contact grid -->
+  <div class="flex flex-col justify-center lg:py-16">
+    <div class="space-y-6 text-lg leading-relaxed text-muted lg:text-xl">
+      {content.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {
+        content.contacts.map((contact) => {
+          const iconKey = normalizedContactLabels[contact.label] ?? "Email";
+          return (
+            <a
+              href={contact.href}
+              target={contact.href.startsWith("http") ? "_blank" : undefined}
+              rel={
+                contact.href.startsWith("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
+              class="group flex items-center gap-4 rounded-2xl border border-white/50 bg-surface-glass p-4 shadow-card backdrop-blur-md transition-all duration-200 hover:-translate-y-1 hover:border-pink-pastel hover:shadow-soft"
+            >
+              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-pink-pastel text-navy-deep transition-colors group-hover:bg-yellow-soft">
+                {iconKey === "Email" && <EmailIcon class="h-5 w-5" />}
+                {iconKey === "WhatsApp" && <WhatsAppIcon class="h-5 w-5" />}
+                {iconKey === "Instagram" && <InstagramIcon class="h-5 w-5" />}
+                {iconKey === "TikTok" && <TikTokIcon class="h-5 w-5" />}
+              </span>
+              <span class="flex min-w-0 flex-col">
+                <span class="text-xs font-bold uppercase tracking-wide text-navy-deep/70">
+                  {contact.label}
+                </span>
+                <span class="truncate text-sm font-semibold text-foreground sm:text-base">
+                  {contact.value}
+                </span>
+              </span>
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const aboutImg = document.querySelector(
+    '#about img[alt="Shimazaki Miyu full body cutout"]',
+  ) as HTMLImageElement | null;
+  const aboutLabel = document.getElementById("about-placeholder-label");
+  if (aboutImg && aboutLabel) {
+    aboutImg.addEventListener("load", () => {
+      aboutLabel.style.display = "none";
+    });
+  }
+</script>

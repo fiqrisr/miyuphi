@@ -1,0 +1,49 @@
+---
+import { siteContent } from "../data/content.ts";
+
+const { hero } = siteContent;
+---
+
+<header class="fixed left-0 right-0 top-0 z-50 px-4 py-4 sm:px-6 lg:px-8">
+  <nav
+    class="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/40 bg-surface-glass px-6 py-3 shadow-card backdrop-blur-xl"
+  >
+    <a
+      href="#hero"
+      class="font-display text-sm font-bold tracking-tight text-navy-deep transition-colors hover:text-pink-400 sm:text-base"
+    >
+      {hero.title}
+    </a>
+
+    <ul
+      class="hidden items-center gap-6 text-sm font-medium text-muted md:flex"
+    >
+      <li>
+        <a href="#about" class="transition-colors hover:text-navy-deep">About</a
+        >
+      </li>
+      <li>
+        <a href="#how-to-order" class="transition-colors hover:text-navy-deep"
+          >Order</a
+        >
+      </li>
+      <li>
+        <a href="#pricing" class="transition-colors hover:text-navy-deep"
+          >Pricing</a
+        >
+      </li>
+      <li>
+        <a href="#portfolio" class="transition-colors hover:text-navy-deep"
+          >Portfolio</a
+        >
+      </li>
+    </ul>
+
+    <a
+      href={siteContent.about.contacts[2].href}
+      class="rounded-full bg-navy-deep px-4 py-2 text-xs font-semibold text-white shadow-card transition-colors hover:bg-navy-deep/90 sm:text-sm"
+    >
+      Book
+    </a>
+  </nav>
+</header>

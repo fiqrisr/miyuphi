@@ -1,0 +1,52 @@
+---
+import type { PricingTier } from "../data/content.ts";
+
+interface Props {
+  readonly heading: string;
+  readonly tiers: readonly PricingTier[];
+  readonly bookingHref: string;
+}
+
+const { heading, tiers, bookingHref } = Astro.props;
+
+function formatPrice(value: number): string {
+  return new Intl.NumberFormat("id-ID").format(value);
+}
+---
+
+<section id="pricing" class="py-16 sm:py-24">
+  <h2
+    class="text-center font-display text-3xl font-bold text-foreground sm:text-4xl"
+  >
+    {heading}
+  </h2>
+  <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      tiers.map((tier) => (
+        <article class="flex flex-col rounded-3xl border border-white/50 bg-surface-glass p-6 shadow-card backdrop-blur-xl transition-all duration-200 hover:-translate-y-1 hover:shadow-soft">
+          <h3 class="font-display text-xl font-bold text-foreground">
+            {tier.name}
+          </h3>
+          <p class="mt-2 font-display text-2xl font-bold text-navy-deep">
+            {tier.currency} {formatPrice(tier.pricePerMinute)}
+            <span class="text-sm font-normal text-muted">{tier.unit}</span>
+          </p>
+          <ul class="mt-4 flex-1 space-y-2">
+            {tier.features.map((feature) => (
+              <li class="flex items-start gap-2 text-sm text-muted">
+                <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-pink-pastel" />
+                {feature}
+              </li>
+            ))}
+          </ul>
+          <a
+            href={bookingHref}
+            class="mt-6 inline-flex items-center justify-center rounded-full bg-navy-deep px-5 py-2.5 text-sm font-semibold text-white shadow-card transition-colors hover:bg-navy-deep/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-deep focus-visible:ring-offset-2"
+          >
+            Book Now
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</section>

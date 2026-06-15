@@ -1,0 +1,18 @@
+---
+interface Props {
+  readonly message: string;
+  readonly name: string;
+}
+
+const { message, name } = Astro.props;
+---
+
+<footer class="py-12 text-center">
+  <p class="font-display text-lg font-semibold text-navy-deep sm:text-xl">
+    {message}
+  </p>
+  <p class="mt-4 text-sm text-muted">
+    © {new Date().getFullYear()}
+    {name}. All rights reserved.
+  </p>
+</footer>
