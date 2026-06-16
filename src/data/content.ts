@@ -6,10 +6,20 @@ export interface PricingStyle {
   readonly features: readonly string[];
 }
 
+export type OrderStepIcon =
+  | "pick-style"
+  | "fill-brief"
+  | "secure-slot"
+  | "send-ingredients"
+  | "cooking-time"
+  | "tasting-review"
+  | "payment-delivery";
+
 export interface OrderStep {
   readonly n: string;
   readonly title: string;
   readonly description: string;
+  readonly icon: OrderStepIcon;
 }
 
 export interface ContactLink {
@@ -96,24 +106,52 @@ export const siteContent = {
     steps: [
       {
         n: "01",
-        title: "Say Hi",
+        icon: "pick-style",
+        title: "Pick Your Style",
         description:
-          "Reach out via email or Instagram DM with your project idea.",
+          "Pilih paket editing yang paling pas. Ada custom request? Feel free to ask!",
       },
       {
         n: "02",
-        title: "Pick a Style",
-        description: "Choose the editing style that fits your vibe & budget.",
+        icon: "fill-brief",
+        title: "Fill the Brief",
+        description:
+          "Isi form order dengan detail. Semakin jelas brief-nya, hasil videonya bakal makin sesuai ekspektasi.",
       },
       {
         n: "03",
-        title: "Send Footage",
-        description: "Share your raw footage, references, and brief.",
+        icon: "secure-slot",
+        title: "Secure Your Slot",
+        description:
+          "Lakukan pembayaran DP min. 50% untuk lock jadwal editing kamu, dan jangan lupa kirim bukti transfernya ya.",
       },
       {
         n: "04",
-        title: "Receive Magic",
-        description: "Get your polished video, ready to publish ✨",
+        icon: "send-ingredients",
+        title: "Send the Ingredients",
+        description:
+          "Upload raw footage kamu ke Google Drive. Pastikan file-nya sudah urut dan rapi supaya proses edit bisa lebih sat-set.",
+      },
+      {
+        n: "05",
+        icon: "cooking-time",
+        title: "Cooking Time",
+        description:
+          "Proses edit memakan waktu 3-5 hari, dihitung sejak footage & brief aku terima dengan lengkap.",
+      },
+      {
+        n: "06",
+        icon: "tasting-review",
+        title: "Tasting & Review",
+        description:
+          "Aku akan kirim preview video sesuai tanggal kesepakatan. Kalau ada yang kurang pas, kamu punya jatah Free Revisi 2x.",
+      },
+      {
+        n: "07",
+        icon: "payment-delivery",
+        title: "Payment & Delivery",
+        description:
+          "Setelah video di-ACC dan lunas, file final HD akan dikirim via GDrive. Videomu siap upload dan viral!",
       },
     ],
   },
