@@ -130,7 +130,7 @@ export interface SiteContent {
 
 export const siteContent = {
   meta: {
-    title: "Yuphi — Daftar Harga Video Editor",
+    title: "Yuphi — Video Editor",
     description:
       "Yuphi (Shimazaki Miyu) — Video editor untuk konten Kecantikan, Makanan & Minuman, dan Gaya Hidup. Layanan editing bilingual dengan estetika K-vibe / Jepang.",
     siteUrl: "https://yuphi.web.id",
@@ -358,9 +358,24 @@ export const siteContent = {
         ],
         layout: "text-left",
         videos: [
-          { platform: "tiktok", videoUrl: "https://www.tiktok.com/@miyur.home20/video/7625838235008257301", gifUrl: "/assets/gifs/style-1-1.gif" },
-          { platform: "tiktok", videoUrl: "https://www.tiktok.com/@miyur.home20/video/7441522981282663688", gifUrl: "/assets/gifs/style-1-2.gif" },
-          { platform: "tiktok", videoUrl: "https://www.tiktok.com/@miyur.home20/video/7616196063359241480", gifUrl: "/assets/gifs/style-1-3.gif" },
+          {
+            platform: "tiktok",
+            videoUrl:
+              "https://www.tiktok.com/@miyur.home20/video/7625838235008257301",
+            gifUrl: "/assets/gifs/style-1-1.gif",
+          },
+          {
+            platform: "tiktok",
+            videoUrl:
+              "https://www.tiktok.com/@miyur.home20/video/7441522981282663688",
+            gifUrl: "/assets/gifs/style-1-2.gif",
+          },
+          {
+            platform: "tiktok",
+            videoUrl:
+              "https://www.tiktok.com/@miyur.home20/video/7616196063359241480",
+            gifUrl: "/assets/gifs/style-1-3.gif",
+          },
         ],
       },
       {
@@ -379,9 +394,23 @@ export const siteContent = {
         ],
         layout: "text-right",
         videos: [
-          { platform: "tiktok", videoUrl: "https://www.tiktok.com/@miyureiss20/video/7573309928048168212", gifUrl: "/assets/gifs/style-2-1.gif" },
-          { platform: "tiktok", videoUrl: "https://www.tiktok.com/@miyureiss20/video/7618045836458593556", gifUrl: "/assets/gifs/style-2-2.gif" },
-          { platform: "tiktok", videoUrl: "https://www.tiktok.com/@miyur.home20/video/7608234018705820949" },
+          {
+            platform: "tiktok",
+            videoUrl:
+              "https://www.tiktok.com/@miyureiss20/video/7573309928048168212",
+            gifUrl: "/assets/gifs/style-2-1.gif",
+          },
+          {
+            platform: "tiktok",
+            videoUrl:
+              "https://www.tiktok.com/@miyureiss20/video/7618045836458593556",
+            gifUrl: "/assets/gifs/style-2-2.gif",
+          },
+          {
+            platform: "tiktok",
+            videoUrl:
+              "https://www.tiktok.com/@miyur.home20/video/7608234018705820949",
+          },
         ],
       },
       {
@@ -404,9 +433,24 @@ export const siteContent = {
         ],
         layout: "text-center",
         videos: [
-          { platform: "tiktok", videoUrl: "https://www.tiktok.com/@miyureiss20/video/7641425603232550151", gifUrl: "/assets/gifs/style-3-1.gif" },
-          { platform: "tiktok", videoUrl: "https://www.tiktok.com/@miyureiss20/video/7642220027051101461", gifUrl: "/assets/gifs/style-3-2.gif" },
-          { platform: "tiktok", videoUrl: "https://www.tiktok.com/@miyureiss20/video/7640568706506034453", gifUrl: "/assets/gifs/style-3-3.gif" },
+          {
+            platform: "tiktok",
+            videoUrl:
+              "https://www.tiktok.com/@miyureiss20/video/7641425603232550151",
+            gifUrl: "/assets/gifs/style-3-1.gif",
+          },
+          {
+            platform: "tiktok",
+            videoUrl:
+              "https://www.tiktok.com/@miyureiss20/video/7642220027051101461",
+            gifUrl: "/assets/gifs/style-3-2.gif",
+          },
+          {
+            platform: "tiktok",
+            videoUrl:
+              "https://www.tiktok.com/@miyureiss20/video/7640568706506034453",
+            gifUrl: "/assets/gifs/style-3-3.gif",
+          },
         ],
       },
       {
@@ -429,9 +473,24 @@ export const siteContent = {
         ],
         layout: "text-center",
         videos: [
-          { platform: "tiktok", videoUrl: "https://www.tiktok.com/@dmozesalon/video/7594711251763186951", gifUrl: "/assets/gifs/style-4-1.gif" },
-          { platform: "tiktok", videoUrl: "https://www.tiktok.com/@shimookasalon/video/7643647370470657300", gifUrl: "/assets/gifs/style-4-2.gif" },
-          { platform: "tiktok", videoUrl: "https://www.tiktok.com/@shimookamensalonid/video/7599349521746840853", gifUrl: "/assets/gifs/style-4-3.gif" },
+          {
+            platform: "tiktok",
+            videoUrl:
+              "https://www.tiktok.com/@dmozesalon/video/7594711251763186951",
+            gifUrl: "/assets/gifs/style-4-1.gif",
+          },
+          {
+            platform: "tiktok",
+            videoUrl:
+              "https://www.tiktok.com/@shimookasalon/video/7643647370470657300",
+            gifUrl: "/assets/gifs/style-4-2.gif",
+          },
+          {
+            platform: "tiktok",
+            videoUrl:
+              "https://www.tiktok.com/@shimookamensalonid/video/7599349521746840853",
+            gifUrl: "/assets/gifs/style-4-3.gif",
+          },
         ],
       },
     ],
