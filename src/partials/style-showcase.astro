@@ -155,7 +155,7 @@ const accents = [
                     <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
                   </svg>
                 </button>
-                <div class="style-mobile-videos mt-4 hidden">
+                <div class="style-mobile-videos mt-4" data-mobile-videos>
                   {mobileVideos}
                 </div>
               </div>
@@ -189,6 +189,40 @@ const accents = [
       opacity: 1;
     }
   }
+
+  .style-mobile-videos {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 450ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .style-mobile-videos.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  .style-mobile-videos > * {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .style-mobile-videos .style-videos > * {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.96);
+    transition: opacity 350ms ease-out, transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .style-mobile-videos.is-open .style-videos > * {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .style-mobile-videos.is-open .style-videos > *:nth-child(1) {
+    transition-delay: 80ms;
+  }
+
+  .style-mobile-videos.is-open .style-videos > *:nth-child(2) {
+    transition-delay: 160ms;
+  }
 </style>
 
 <script>
@@ -216,6 +250,8 @@ const accents = [
       setActive(0);
     }
 
+    const closeMobileVideos: Array<() => void> = [];
+
     cards.forEach((card, index) => {
       card.addEventListener("mouseenter", () => {
         if (window.innerWidth >= 768) setActive(index);
@@ -235,19 +271,27 @@ const accents = [
         ".style-video-toggle",
       );
       const mobileVideos = card.querySelector<HTMLElement>(
-        ".style-mobile-videos",
+        "[data-mobile-videos]",
       );
       const toggleIcon = toggle?.querySelector<SVGElement>("svg");
 
+      function setMobileVideosOpen(open: boolean) {
+        mobileVideos?.classList.toggle("is-open", open);
+        toggle?.setAttribute("aria-expanded", String(open));
+        toggleIcon?.classList.toggle("rotate-180", open);
+        if (toggle) {
+          toggle.querySelector("span")!.textContent = open
+            ? "Sembunyikan Video"
+            : "Lihat Contoh Video";
+        }
+      }
+
+      closeMobileVideos.push(() => setMobileVideosOpen(false));
+
       toggle?.addEventListener("click", (e) => {
         e.stopPropagation();
-        const isOpen = !mobileVideos?.classList.contains("hidden");
-        mobileVideos?.classList.toggle("hidden", isOpen);
-        toggle.setAttribute("aria-expanded", String(!isOpen));
-        toggleIcon?.classList.toggle("rotate-180", !isOpen);
-        toggle.querySelector("span")!.textContent = isOpen
-          ? "Lihat Contoh Video"
-          : "Sembunyikan Video";
+        const isOpen = mobileVideos?.classList.contains("is-open") ?? false;
+        setMobileVideosOpen(!isOpen);
       });
     });
 
@@ -257,6 +301,7 @@ const accents = [
 
     window.addEventListener("resize", () => {
       if (window.innerWidth >= 768) {
+        closeMobileVideos.forEach((close) => close());
         const current = cards.find((c) => c.dataset.active === "true");
         setActive(current ? cards.indexOf(current) : 0);
       } else {
