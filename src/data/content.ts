@@ -6,6 +6,34 @@ export interface PricingStyle {
   readonly features: readonly string[];
 }
 
+export type VideoPlatform = "instagram" | "tiktok";
+
+export interface StyleVideo {
+  readonly platform: VideoPlatform;
+  readonly embedUrl: string;
+  readonly label?: string;
+}
+
+export interface StyleFeature {
+  readonly text: string;
+  readonly icon: string;
+}
+
+export interface StyleShowcaseItem {
+  readonly id: string;
+  readonly name: string;
+  readonly price: string;
+  readonly features: readonly StyleFeature[];
+  readonly layout: "text-left" | "text-center" | "text-right";
+  readonly videos: readonly StyleVideo[];
+}
+
+export interface StyleShowcase {
+  readonly heading: string;
+  readonly subtitle: string;
+  readonly styles: readonly StyleShowcaseItem[];
+}
+
 export type OrderStepIcon =
   | "pick-style"
   | "fill-brief"
@@ -28,6 +56,11 @@ export interface ContactLink {
   readonly value: string;
 }
 
+export interface AboutCategory {
+  readonly label: string;
+  readonly colorClass: string;
+}
+
 export interface SiteContent {
   readonly meta: {
     readonly title: string;
@@ -41,6 +74,12 @@ export interface SiteContent {
   };
   readonly about: {
     readonly heading: string;
+    readonly greeting: string;
+    readonly intro: {
+      readonly before: string;
+      readonly categories: readonly AboutCategory[];
+      readonly after: string;
+    };
     readonly paragraphs: readonly string[];
     readonly contacts: readonly ContactLink[];
   };
@@ -53,6 +92,7 @@ export interface SiteContent {
     readonly subtitle: string;
     readonly styles: readonly PricingStyle[];
   };
+  readonly styleShowcase: StyleShowcase;
   readonly contact: {
     readonly subtitle: string;
     readonly heading: string;
@@ -66,22 +106,32 @@ export interface SiteContent {
 
 export const siteContent = {
   meta: {
-    title: "Yuphi — Video Editor Pricelist",
+    title: "Yuphi — Daftar Harga Video Editor",
     description:
-      "Yuphi (Shimazaki Miyu) — Video editor for Beauty, F&B, and Lifestyle. Bilingual & K-vibe / Japanese aesthetic editing services.",
+      "Yuphi (Shimazaki Miyu) — Video editor untuk konten Kecantikan, Makanan & Minuman, dan Gaya Hidup. Layanan editing bilingual dengan estetika K-vibe / Jepang.",
   },
   hero: {
-    subtitle: "♡ VIDEO EDITOR PORTFOLIO ♡",
+    subtitle: "♡ PORTFOLIO VIDEO EDITOR ♡",
     title: "Shimazaki",
     highlight: "Miyu",
     description:
-      "Turning raw footage into engaging, dreamy visual stories ☁ Specialized in Beauty, F&B, and Lifestyle with a K-vibe / Japanese aesthetic.",
+      "Mengubah footage mentah menjadi cerita visual yang menarik dan dreamy ☁ Spesialisasi di bidang Kecantikan, Makanan & Minuman, dan Gaya Hidup dengan estetika K-vibe / Jepang.",
   },
   about: {
-    heading: "♡ ABOUT ME",
+    heading: "♡ TENTANG AKU",
+    greeting: "Halo, Aku Miyu!",
+    intro: {
+      before:
+        "Halo, Yuphi di sini! Aku adalah Video Editor yang bersemangat mengubah footage mentahmu menjadi cerita visual yang menarik dan dinamis. Dengan ketajaman detail dan estetika, aku spesialis mengedit konten ",
+      categories: [
+        { label: "Kecantikan", colorClass: "bg-yellow-soft" },
+        { label: "Makanan & Minuman", colorClass: "bg-pink-pastel" },
+        { label: "Gaya Hidup", colorClass: "bg-blue-pale" },
+      ],
+      after: " — termasuk konten bilingual dan estetika K-vibe / Jepang.",
+    },
     paragraphs: [
-      "Hello, Yuphi here! I am a passionate Video Editor dedicated to turning your raw footage into engaging and dynamic visual stories. With a strong eye for detail and aesthetics, I specialize in editing for the Beauty, F&B, and Lifestyle niches — including bilingual content and K-vibe / Japanese aesthetics.",
-      "My goal is to help creators and brands capture their audience's attention through good pacing, the right audio choices, and creative storytelling. Let's bring your vision to life! ✨",
+      "Tujuanku adalah membantu kreator dan brand menarik perhatian audiens melalui pacing yang pas, pemilihan audio yang tepat, dan storytelling yang kreatif. Mari wujudkan visimu! ✨",
     ],
     contacts: [
       {
@@ -90,7 +140,7 @@ export const siteContent = {
         value: "shimazaki.miyu20@gmail.com",
       },
       {
-        label: "Phone",
+        label: "Telepon",
         href: "https://wa.me/62895388924697",
         value: "+62 895-3889-24697",
       },
@@ -102,62 +152,62 @@ export const siteContent = {
     ],
   },
   orderFlow: {
-    heading: "♡ HOW TO ORDER",
+    heading: "♡ CARA ORDER",
     steps: [
       {
         n: "01",
         icon: "pick-style",
-        title: "Pick Your Style",
+        title: "Pilih Gaya Kamu",
         description:
-          "Pilih paket editing yang paling pas. Ada custom request? Feel free to ask!",
+          "Pilih paket editing yang paling cocok. Mau request khusus? Silakan tanya aja!",
       },
       {
         n: "02",
         icon: "fill-brief",
-        title: "Fill the Brief",
+        title: "Isi Brief",
         description:
-          "Isi form order dengan detail. Semakin jelas brief-nya, hasil videonya bakal makin sesuai ekspektasi.",
+          "Isi form order dengan detail. Semakin jelas brief-nya, hasil video bakal makin sesuai ekspektasi.",
       },
       {
         n: "03",
         icon: "secure-slot",
-        title: "Secure Your Slot",
+        title: "Amankan Jadwal",
         description:
-          "Lakukan pembayaran DP min. 50% untuk lock jadwal editing kamu, dan jangan lupa kirim bukti transfernya ya.",
+          "Bayar DP min. 50% untuk mengunci jadwal editing kamu, dan jangan lupa kirim bukti transfernya ya.",
       },
       {
         n: "04",
         icon: "send-ingredients",
-        title: "Send the Ingredients",
+        title: "Kirim Bahan",
         description:
-          "Upload raw footage kamu ke Google Drive. Pastikan file-nya sudah urut dan rapi supaya proses edit bisa lebih sat-set.",
+          "Upload footage mentah ke Google Drive. Pastikan file sudah urut dan rapi supaya proses edit bisa lebih sat-set.",
       },
       {
         n: "05",
         icon: "cooking-time",
-        title: "Cooking Time",
+        title: "Waktu Memasak",
         description:
-          "Proses edit memakan waktu 3-5 hari, dihitung sejak footage & brief aku terima dengan lengkap.",
+          "Proses editing membutuhkan waktu 3-5 hari, dihitung sejak footage & brief aku terima dengan lengkap.",
       },
       {
         n: "06",
         icon: "tasting-review",
-        title: "Tasting & Review",
+        title: "Cicipi & Revisi",
         description:
-          "Aku akan kirim preview video sesuai tanggal kesepakatan. Kalau ada yang kurang pas, kamu punya jatah Free Revisi 2x.",
+          "Aku akan kirim preview video sesuai tanggal kesepakatan. Kalau ada yang kurang pas, kamu punya jatah revisi gratis 2x.",
       },
       {
         n: "07",
         icon: "payment-delivery",
-        title: "Payment & Delivery",
+        title: "Pembayaran & Pengiriman",
         description:
           "Setelah video di-ACC dan lunas, file final HD akan dikirim via GDrive. Videomu siap upload dan viral!",
       },
     ],
   },
   pricing: {
-    heading: "♡ PRICELIST",
-    subtitle: "All prices are per minute (IDR) ☁",
+    heading: "♡ DAFTAR HARGA",
+    subtitle: "Semua harga per menit (IDR) ☁",
     styles: [
       {
         id: "style-1",
@@ -165,9 +215,9 @@ export const siteContent = {
         price: "60.000",
         color: "var(--color-blue-pale)",
         features: [
-          "Basic Editing (Cut-to-cut & perapihan video)",
+          "Editing Dasar (Potong-potong & perapihan video)",
           "Penambahan Teks / Judul Standar",
-          "Background Music (BGM) & Sound Effect (SFX) Standar",
+          "Musik Latar (BGM) & Efek Suara (SFX) Standar",
           "Penyesuaian warna & audio dasar",
         ],
       },
@@ -188,7 +238,7 @@ export const siteContent = {
         color: "var(--color-pink-pastel)",
         features: [
           "Semua fitur di Style 1 dan 2",
-          "+ Efek Visual & Transisi Dinamis (Advanced Editing)",
+          "+ Efek Visual & Transisi Dinamis (Editing Lanjutan)",
           "+ Elemen Meme Viral & SFX Trending",
         ],
       },
@@ -200,18 +250,18 @@ export const siteContent = {
         features: [
           "Semua fitur di Style 1, 2, dan 3",
           "+ Penambahan B-Roll (sisipan foto/video/ilustrasi)",
-          "+ Custom Animation & Complex Editing",
+          "+ Animasi Kustom & Editing Kompleks",
         ],
       },
     ],
   },
   contact: {
     subtitle: "ありがとう · 감사합니다",
-    heading: "Thank You\nSo Much!",
-    description: "Ready to bring your story to life? Let's chat ♡",
+    heading: "Terima Kasih\nBanyak!",
+    description: "Siap mewujudkan ceritamu? Mari ngobrol ♡",
     links: [
       {
-        label: "Email Me",
+        label: "Kirim Email",
         href: "mailto:shimazaki.miyu20@gmail.com",
         value: "shimazaki.miyu20@gmail.com",
       },
@@ -219,6 +269,77 @@ export const siteContent = {
         label: "Instagram",
         href: "https://instagram.com/miyureiss20",
         value: "@miyureiss20",
+      },
+    ],
+  },
+  styleShowcase: {
+    heading: "♡ STYLE SHOWCASE",
+    subtitle: "Contoh hasil edit per style. Ganti placeholder dengan embed Instagram/TikTok kamu ☁",
+    styles: [
+      {
+        id: "style-1",
+        name: "Style 1",
+        price: "60.000",
+        features: [
+          { text: "Basic Editing (Cut-to-cut & perapihan video)", icon: "M9.5 4C7.57 4 6 5.57 6 7.5S7.57 11 9.5 11 13 9.43 13 7.5 11.43 4 9.5 4zm0 2c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5S8 8.33 8 7.5 8.67 6 9.5 6zM6 13l4 7h2l-4-7H6zm8 0l4 7h2l-4-7h-2z" },
+          { text: "Penambahan Teks / Judul Standar", icon: "M5 4v3h2.5V17H5v3h9v-3H11.5V7H14V4H5z" },
+          { text: "Background Music (BGM) & Sound Effect (SFX) Standar", icon: "M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" },
+          { text: "Penyesuaian warna & audio dasar", icon: "M12 3a9 9 0 0 0 0 18c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8z" },
+        ],
+        layout: "text-left",
+        videos: [
+          { platform: "instagram", embedUrl: "" },
+          { platform: "tiktok", embedUrl: "" },
+          { platform: "instagram", embedUrl: "" },
+        ],
+      },
+      {
+        id: "style-2",
+        name: "Style 2",
+        price: "100.000",
+        features: [
+          { text: "Semua fitur di Style 1", icon: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" },
+          { text: "+ Subtitle (Pilihan 1 atau 2 bahasa)", icon: "M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" },
+        ],
+        layout: "text-right",
+        videos: [
+          { platform: "tiktok", embedUrl: "" },
+          { platform: "instagram", embedUrl: "" },
+          { platform: "tiktok", embedUrl: "" },
+        ],
+      },
+      {
+        id: "style-3",
+        name: "Style 3",
+        price: "120.000",
+        features: [
+          { text: "Semua fitur di Style 1 dan 2", icon: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" },
+          { text: "+ Efek Visual & Transisi Dinamis (Advanced Editing)", icon: "M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" },
+          { text: "+ Elemen Meme Viral & SFX Trending (Cocok untuk konten sosmed yang engaging)", icon: "M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z" },
+        ],
+        layout: "text-center",
+        videos: [
+          { platform: "instagram", embedUrl: "" },
+          { platform: "tiktok", embedUrl: "" },
+          { platform: "instagram", embedUrl: "" },
+        ],
+      },
+      {
+        id: "style-4",
+        name: "Style 4",
+        price: "150.000",
+        features: [
+          { text: "Semua fitur di Style 1, 2, dan 3", icon: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" },
+          { text: "+ Penambahan B-Roll (Sisipan foto/video/gambar ilustrasi untuk memperjelas konteks)", icon: "M18 4v1h-2V4H8v1H6V4H4v16h2v-1h2v1h8v-1h2v1h2V4h-2z" },
+          { text: "+ Custom Animation & Complex Editing (Bebas request efek rumit sesuai kebutuhan)", icon: "M7.5 5.6L5 7l1.4-2.5L5 2l2.5 1.4L10 2 8.6 4.5 10 7 7.5 5.6zm12 9.8L22 17l-1.4-2.5L22 12l-2.5 1.4L17 12l1.4 2.5L17 17l2.5-1.6zM22 2l-1.4 2.5L22 7l-2.5-1.4L17 7l1.4-2.5L17 2l2.5 1.4L22 2zM9.5 22l1.4-2.5L9.5 17l2.5 1.4L14.5 17l-1.4 2.5 1.4 2.5-2.5-1.4-2.5 1.4z" },
+        ],
+        layout: "text-center",
+        videos: [
+          { platform: "tiktok", embedUrl: "" },
+          { platform: "instagram", embedUrl: "" },
+          { platform: "tiktok", embedUrl: "" },
+          { platform: "instagram", embedUrl: "" },
+        ],
       },
     ],
   },

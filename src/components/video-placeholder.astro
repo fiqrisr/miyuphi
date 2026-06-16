@@ -1,0 +1,49 @@
+---
+import type { VideoPlatform } from "../data/content.ts";
+
+interface Props {
+  readonly platform: VideoPlatform;
+  readonly embedUrl?: string;
+  readonly label?: string;
+}
+
+const { platform, embedUrl = "", label } = Astro.props;
+
+const isInstagram = platform === "instagram";
+const platformLabel = isInstagram ? "Instagram" : "TikTok";
+const iconPath = isInstagram
+  ? "M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z M20 6h-2.5l-1.5-2h-7L7.5 6H5c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8 12.5c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"
+  : "M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z";
+---
+
+<div class="video-placeholder relative h-full w-full bg-neutral-900">
+  {
+    embedUrl ? (
+      <iframe
+        src={embedUrl}
+        title={`${platformLabel} video embed`}
+        class="h-full w-full border-0"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+      />
+    ) : (
+      <div class="flex h-full w-full flex-col items-center justify-center gap-3 p-4 text-center text-white">
+        <svg
+          class="h-10 w-10 text-white/80"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d={iconPath} />
+        </svg>
+        <div class="space-y-1">
+          <p class="text-sm font-semibold">{label || platformLabel}</p>
+          <p class="max-w-[10rem] text-xs text-neutral-400">
+            Tambahkan embed URL {platformLabel} di sini.
+          </p>
+        </div>
+      </div>
+    )
+  }
+</div>
