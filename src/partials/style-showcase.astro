@@ -155,7 +155,9 @@ const accents = [
                     <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
                   </svg>
                 </button>
-                <div class="style-mobile-videos mt-4 hidden">{mobileVideos}</div>
+                <div class="style-mobile-videos mt-4 hidden">
+                  {mobileVideos}
+                </div>
               </div>
             </article>
           );
@@ -191,7 +193,9 @@ const accents = [
 
 <script>
   (function initStyleExpander() {
-    const expander = document.querySelector<HTMLElement>("[data-style-expander]");
+    const expander = document.querySelector<HTMLElement>(
+      "[data-style-expander]",
+    );
     if (!expander) return;
 
     const cards = Array.from(

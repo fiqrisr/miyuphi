@@ -115,7 +115,7 @@ export const siteContent = {
     title: "Shimazaki",
     highlight: "Miyu",
     description:
-      "Mengubah footage mentah menjadi cerita visual yang menarik dan dreamy ☁ Spesialisasi di bidang Kecantikan, Makanan & Minuman, dan Gaya Hidup dengan estetika K-vibe / Jepang.",
+      "Mengubah footage mentah menjadi cerita visual yang menarik dan dreamy ✦ Spesialisasi di bidang Kecantikan, Makanan & Minuman, dan Gaya Hidup dengan estetika K-vibe / Jepang.",
   },
   about: {
     heading: "♡ TENTANG AKU",
@@ -147,6 +147,11 @@ export const siteContent = {
       {
         label: "Instagram",
         href: "https://instagram.com/miyureiss20",
+        value: "@miyureiss20",
+      },
+      {
+        label: "TikTok",
+        href: "https://tiktok.com/@miyureiss20",
         value: "@miyureiss20",
       },
     ],
@@ -207,7 +212,7 @@ export const siteContent = {
   },
   pricing: {
     heading: "♡ DAFTAR HARGA",
-    subtitle: "Semua harga per menit (IDR) ☁",
+    subtitle: "Semua harga per menit (IDR) ✦",
     styles: [
       {
         id: "style-1",
@@ -274,17 +279,30 @@ export const siteContent = {
   },
   styleShowcase: {
     heading: "♡ STYLE SHOWCASE",
-    subtitle: "Contoh hasil edit per style. Ganti placeholder dengan embed Instagram/TikTok kamu ☁",
+    subtitle:
+      "Contoh hasil edit per style. Ganti placeholder dengan embed Instagram/TikTok kamu ✦",
     styles: [
       {
         id: "style-1",
         name: "Style 1",
         price: "60.000",
         features: [
-          { text: "Basic Editing (Cut-to-cut & perapihan video)", icon: "M9.5 4C7.57 4 6 5.57 6 7.5S7.57 11 9.5 11 13 9.43 13 7.5 11.43 4 9.5 4zm0 2c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5S8 8.33 8 7.5 8.67 6 9.5 6zM6 13l4 7h2l-4-7H6zm8 0l4 7h2l-4-7h-2z" },
-          { text: "Penambahan Teks / Judul Standar", icon: "M5 4v3h2.5V17H5v3h9v-3H11.5V7H14V4H5z" },
-          { text: "Background Music (BGM) & Sound Effect (SFX) Standar", icon: "M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" },
-          { text: "Penyesuaian warna & audio dasar", icon: "M12 3a9 9 0 0 0 0 18c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8z" },
+          {
+            text: "Basic Editing (Cut-to-cut & perapihan video)",
+            icon: "M9.5 4C7.57 4 6 5.57 6 7.5S7.57 11 9.5 11 13 9.43 13 7.5 11.43 4 9.5 4zm0 2c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5S8 8.33 8 7.5 8.67 6 9.5 6zM6 13l4 7h2l-4-7H6zm8 0l4 7h2l-4-7h-2z",
+          },
+          {
+            text: "Penambahan Teks / Judul Standar",
+            icon: "M5 4v3h2.5V17H5v3h9v-3H11.5V7H14V4H5z",
+          },
+          {
+            text: "Background Music (BGM) & Sound Effect (SFX) Standar",
+            icon: "M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z",
+          },
+          {
+            text: "Penyesuaian warna & audio dasar",
+            icon: "M12 3a9 9 0 0 0 0 18c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8z",
+          },
         ],
         layout: "text-left",
         videos: [
@@ -298,8 +316,14 @@ export const siteContent = {
         name: "Style 2",
         price: "100.000",
         features: [
-          { text: "Semua fitur di Style 1", icon: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" },
-          { text: "+ Subtitle (Pilihan 1 atau 2 bahasa)", icon: "M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" },
+          {
+            text: "Semua fitur di Style 1",
+            icon: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z",
+          },
+          {
+            text: "+ Subtitle (Pilihan 1 atau 2 bahasa)",
+            icon: "M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z",
+          },
         ],
         layout: "text-right",
         videos: [
@@ -313,9 +337,18 @@ export const siteContent = {
         name: "Style 3",
         price: "120.000",
         features: [
-          { text: "Semua fitur di Style 1 dan 2", icon: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" },
-          { text: "+ Efek Visual & Transisi Dinamis (Advanced Editing)", icon: "M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" },
-          { text: "+ Elemen Meme Viral & SFX Trending (Cocok untuk konten sosmed yang engaging)", icon: "M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z" },
+          {
+            text: "Semua fitur di Style 1 dan 2",
+            icon: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z",
+          },
+          {
+            text: "+ Efek Visual & Transisi Dinamis (Advanced Editing)",
+            icon: "M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z",
+          },
+          {
+            text: "+ Elemen Meme Viral & SFX Trending (Cocok untuk konten sosmed yang engaging)",
+            icon: "M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z",
+          },
         ],
         layout: "text-center",
         videos: [
@@ -329,9 +362,18 @@ export const siteContent = {
         name: "Style 4",
         price: "150.000",
         features: [
-          { text: "Semua fitur di Style 1, 2, dan 3", icon: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" },
-          { text: "+ Penambahan B-Roll (Sisipan foto/video/gambar ilustrasi untuk memperjelas konteks)", icon: "M18 4v1h-2V4H8v1H6V4H4v16h2v-1h2v1h8v-1h2v1h2V4h-2z" },
-          { text: "+ Custom Animation & Complex Editing (Bebas request efek rumit sesuai kebutuhan)", icon: "M7.5 5.6L5 7l1.4-2.5L5 2l2.5 1.4L10 2 8.6 4.5 10 7 7.5 5.6zm12 9.8L22 17l-1.4-2.5L22 12l-2.5 1.4L17 12l1.4 2.5L17 17l2.5-1.6zM22 2l-1.4 2.5L22 7l-2.5-1.4L17 7l1.4-2.5L17 2l2.5 1.4L22 2zM9.5 22l1.4-2.5L9.5 17l2.5 1.4L14.5 17l-1.4 2.5 1.4 2.5-2.5-1.4-2.5 1.4z" },
+          {
+            text: "Semua fitur di Style 1, 2, dan 3",
+            icon: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z",
+          },
+          {
+            text: "+ Penambahan B-Roll (Sisipan foto/video/gambar ilustrasi untuk memperjelas konteks)",
+            icon: "M18 4v1h-2V4H8v1H6V4H4v16h2v-1h2v1h8v-1h2v1h2V4h-2z",
+          },
+          {
+            text: "+ Custom Animation & Complex Editing (Bebas request efek rumit sesuai kebutuhan)",
+            icon: "M7.5 5.6L5 7l1.4-2.5L5 2l2.5 1.4L10 2 8.6 4.5 10 7 7.5 5.6zm12 9.8L22 17l-1.4-2.5L22 12l-2.5 1.4L17 12l1.4 2.5L17 17l2.5-1.6zM22 2l-1.4 2.5L22 7l-2.5-1.4L17 7l1.4-2.5L17 2l2.5 1.4L22 2zM9.5 22l1.4-2.5L9.5 17l2.5 1.4L14.5 17l-1.4 2.5 1.4 2.5-2.5-1.4-2.5 1.4z",
+          },
         ],
         layout: "text-center",
         videos: [

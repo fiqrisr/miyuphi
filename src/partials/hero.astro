@@ -21,8 +21,7 @@ const { content } = Astro.props;
         class="font-display text-6xl leading-[0.95] text-foreground md:text-8xl"
       >
         {content.title}<br />
-        <span
-          class="mt-2 inline-block rounded-3xl bg-pink-pastel px-4 py-1"
+        <span class="mt-2 inline-block rounded-3xl bg-pink-pastel px-4 py-1"
           >{content.highlight}</span
         >
       </h1>
@@ -46,7 +45,8 @@ const { content } = Astro.props;
     </div>
 
     <div class="parallax-hero-image relative flex justify-center">
-      <div class="absolute inset-0 rounded-full bg-pink-pastel/40 blur-3xl"></div>
+      <div class="absolute inset-0 rounded-full bg-pink-pastel/40 blur-3xl">
+      </div>
       <img
         src="/assets/hero-photo-placeholder.svg"
         alt="Foto profil"
