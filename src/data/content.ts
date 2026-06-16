@@ -30,8 +30,24 @@ export interface StyleShowcaseItem {
 
 export interface StyleShowcase {
   readonly heading: string;
+  readonly title: string;
   readonly subtitle: string;
   readonly styles: readonly StyleShowcaseItem[];
+}
+
+export type KitchenPlatform = "instagram" | "tiktok";
+
+export interface KitchenAccount {
+  readonly platform: KitchenPlatform;
+  readonly handle: string;
+  readonly profileUrl: string;
+  readonly embedUrl: string;
+}
+
+export interface KitchenSection {
+  readonly heading: string;
+  readonly subtitle: string;
+  readonly accounts: readonly KitchenAccount[];
 }
 
 export type OrderStepIcon =
@@ -93,6 +109,7 @@ export interface SiteContent {
     readonly styles: readonly PricingStyle[];
   };
   readonly styleShowcase: StyleShowcase;
+  readonly kitchenSection: KitchenSection;
   readonly contact: {
     readonly subtitle: string;
     readonly heading: string;
@@ -275,12 +292,18 @@ export const siteContent = {
         href: "https://instagram.com/miyureiss20",
         value: "@miyureiss20",
       },
+      {
+        label: "WhatsApp",
+        href: "https://wa.me/62895388924697",
+        value: "+62 895-3889-24697",
+      },
     ],
   },
   styleShowcase: {
-    heading: "♡ STYLE SHOWCASE",
+    heading: "♡ DAFTAR HARGA",
+    title: "Daftar Harga",
     subtitle:
-      "Contoh hasil edit per style. Ganti placeholder dengan embed Instagram/TikTok kamu ✦",
+      "Semua harga per menit (IDR). Pilih style editing yang paling cocok buat konten kamu ✦",
     styles: [
       {
         id: "style-1",
@@ -382,6 +405,25 @@ export const siteContent = {
           { platform: "tiktok", embedUrl: "" },
           { platform: "instagram", embedUrl: "" },
         ],
+      },
+    ],
+  },
+  kitchenSection: {
+    heading: "More from the Kitchen",
+    subtitle:
+      "Intip hasil edit terbaru, behind-the-scenes, dan moodboard langsung dari akun sosial media ✦",
+    accounts: [
+      {
+        platform: "tiktok",
+        handle: "@miyureiss20",
+        profileUrl: "https://www.tiktok.com/@miyureiss20",
+        embedUrl: "https://www.tiktok.com/embed/@miyureiss20",
+      },
+      {
+        platform: "instagram",
+        handle: "@miyureiss20",
+        profileUrl: "https://www.instagram.com/miyureiss20",
+        embedUrl: "https://www.instagram.com/miyureiss20/embed",
       },
     ],
   },

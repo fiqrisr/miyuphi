@@ -21,20 +21,29 @@ const { content } = Astro.props;
     </p>
     <div class="flex flex-wrap justify-center gap-3">
       {
-        content.links.map((link, idx) => (
-          <a
-            href={link.href}
-            target={link.href.startsWith("http") ? "_blank" : undefined}
-            rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-            class={`rounded-full px-6 py-3 font-bold shadow-soft transition hover:scale-105 ${
-              idx === 0
+        content.links.map((link, idx) => {
+          const isWhatsApp = link.href.includes("wa.me");
+          const isInstagram = link.href.includes("instagram.com");
+
+          const buttonClass = isWhatsApp
+            ? "bg-blue-pale text-foreground"
+            : isInstagram
+              ? "bg-pink-pastel text-foreground"
+              : idx === 0
                 ? "bg-foreground text-background"
-                : "bg-pink-pastel text-foreground"
-            }`}
-          >
-            {link.label}
-          </a>
-        ))
+                : "bg-pink-pastel text-foreground";
+
+          return (
+            <a
+              href={link.href}
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+              class={`rounded-full px-6 py-3 font-bold shadow-soft transition hover:scale-105 ${buttonClass}`}
+            >
+              {link.label}
+            </a>
+          );
+        })
       }
     </div>
   </div>

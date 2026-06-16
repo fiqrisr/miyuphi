@@ -6,12 +6,21 @@ import Hero from "../partials/hero.astro";
 import About from "../partials/about.astro";
 import OrderFlow from "../partials/order-flow.astro";
 import StyleShowcase from "../partials/style-showcase.astro";
+import KitchenSection from "../partials/kitchen-section.astro";
 import ContactSection from "../partials/contact-section.astro";
 import Footer from "../partials/footer.astro";
 import { siteContent } from "../data/content.ts";
 
-const { meta, hero, about, orderFlow, styleShowcase, contact, footer } =
-  siteContent;
+const {
+  meta,
+  hero,
+  about,
+  orderFlow,
+  styleShowcase,
+  kitchenSection,
+  contact,
+  footer,
+} = siteContent;
 ---
 
 <Layout title={meta.title} description={meta.description}>
@@ -23,6 +32,7 @@ const { meta, hero, about, orderFlow, styleShowcase, contact, footer } =
     <About content={about} />
     <OrderFlow content={orderFlow} />
     <StyleShowcase content={styleShowcase} />
+    <KitchenSection content={kitchenSection} />
     <ContactSection content={contact} />
     <Footer name={footer.name} />
   </main>
