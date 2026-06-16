@@ -133,7 +133,7 @@ export const siteContent = {
     title: "Yuphi — Video Editor",
     description:
       "Yuphi (Shimazaki Miyu) — Video editor untuk konten Kecantikan, Makanan & Minuman, dan Gaya Hidup. Layanan editing bilingual dengan estetika K-vibe / Jepang.",
-    siteUrl: "https://yuphi.web.id",
+    siteUrl: "https://miyu.fiqri.dev",
     keywords: [
       "video editor",
       "video editor Indonesia",
