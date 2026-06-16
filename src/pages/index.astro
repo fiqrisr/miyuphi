@@ -23,7 +23,16 @@ const {
 } = siteContent;
 ---
 
-<Layout title={meta.title} description={meta.description}>
+<Layout
+  title={meta.title}
+  description={meta.description}
+  image={meta.image}
+  imageAlt={meta.imageAlt}
+  siteUrl={meta.siteUrl}
+  keywords={meta.keywords}
+  author={meta.author}
+  twitterHandle={meta.twitterHandle}
+>
   <ParallaxBackground />
   <Navbar />
 

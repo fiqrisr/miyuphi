@@ -6,6 +6,13 @@ interface Props {
 }
 
 const { content } = Astro.props;
+
+const getButtonClass = (href: string, index: number): string => {
+  if (href.includes("wa.me")) return "bg-blue-pale text-foreground";
+  if (href.includes("instagram.com")) return "bg-pink-pastel text-foreground";
+  if (index === 0) return "bg-foreground text-background";
+  return "bg-pink-pastel text-foreground";
+};
 ---
 
 <section id="contact" class="px-6 py-32">
@@ -22,23 +29,14 @@ const { content } = Astro.props;
     <div class="flex flex-wrap justify-center gap-3">
       {
         content.links.map((link, idx) => {
-          const isWhatsApp = link.href.includes("wa.me");
-          const isInstagram = link.href.includes("instagram.com");
-
-          const buttonClass = isWhatsApp
-            ? "bg-blue-pale text-foreground"
-            : isInstagram
-              ? "bg-pink-pastel text-foreground"
-              : idx === 0
-                ? "bg-foreground text-background"
-                : "bg-pink-pastel text-foreground";
+          const isExternal = link.href.startsWith("http");
 
           return (
             <a
               href={link.href}
-              target={link.href.startsWith("http") ? "_blank" : undefined}
-              rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-              class={`rounded-full px-6 py-3 font-bold shadow-soft transition hover:scale-105 ${buttonClass}`}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noreferrer" : undefined}
+              class={`rounded-full px-6 py-3 font-bold shadow-soft transition hover:scale-105 ${getButtonClass(link.href, idx)}`}
             >
               {link.label}
             </a>

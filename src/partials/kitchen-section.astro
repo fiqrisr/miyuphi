@@ -147,5 +147,9 @@ const platformMeta: Record<
     </div>
   </div>
 
-  {hasTikTok && <script is:inline async src="https://www.tiktok.com/embed.js"></script>}
+  {
+    hasTikTok && (
+      <script is:inline async src="https://www.tiktok.com/embed.js" />
+    )
+  }
 </section>

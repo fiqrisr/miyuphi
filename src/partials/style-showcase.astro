@@ -1,6 +1,5 @@
 ---
 import type { SiteContent } from "../data/content.ts";
-import PhoneFrame from "../components/phone-frame.astro";
 import VideoPlaceholder from "../components/video-placeholder.astro";
 
 interface Props {
@@ -65,21 +64,21 @@ const accents = [
           );
 
           const desktopVideos = (
-            <div class="style-videos flex items-end justify-center gap-3 md:gap-4 lg:gap-5">
+            <div class="style-videos flex items-center justify-center gap-4 md:gap-6">
               {style.videos.slice(0, 2).map((video) => (
-                <PhoneFrame size="md">
+                <div class="w-44 md:w-52 lg:w-60">
                   <VideoPlaceholder {...video} />
-                </PhoneFrame>
+                </div>
               ))}
             </div>
           );
 
           const mobileVideos = (
-            <div class="style-videos flex items-end justify-center gap-3">
+            <div class="style-videos flex items-center justify-center gap-3">
               {style.videos.slice(0, 2).map((video) => (
-                <PhoneFrame size="sm">
+                <div class="w-36">
                   <VideoPlaceholder {...video} />
-                </PhoneFrame>
+                </div>
               ))}
             </div>
           );

@@ -47,13 +47,30 @@ const { content } = Astro.props;
     <div class="parallax-hero-image relative flex justify-center">
       <div class="absolute inset-0 rounded-full bg-pink-pastel/40 blur-3xl">
       </div>
-      <img
-        src="/assets/hero-photo-placeholder.svg"
-        alt="Foto profil"
-        class="float-slow relative w-full max-w-md drop-shadow-2xl"
-        width="400"
-        height="400"
-      />
+      <div class="float-slow relative w-full max-w-md">
+        <svg
+          class="absolute -inset-3 h-[calc(100%+24px)] w-[calc(100%+24px)]"
+          viewBox="0 0 448 448"
+          fill="none"
+          aria-hidden="true"
+        >
+          <circle
+            cx="224"
+            cy="224"
+            r="220"
+            stroke="#1e2a4a"
+            stroke-width="4"
+            stroke-dasharray="16 16"></circle>
+        </svg>
+        <img
+          src="/assets/photo.webp"
+          alt="Foto profil Shimazaki Miyu"
+          class="relative aspect-square w-full rounded-full object-cover drop-shadow-2xl"
+          width="400"
+          height="400"
+          loading="eager"
+        />
+      </div>
     </div>
   </div>
 </section>

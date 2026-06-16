@@ -81,6 +81,12 @@ export interface SiteContent {
   readonly meta: {
     readonly title: string;
     readonly description: string;
+    readonly siteUrl: string;
+    readonly keywords: readonly string[];
+    readonly author: string;
+    readonly twitterHandle: string;
+    readonly image: string;
+    readonly imageAlt: string;
   };
   readonly hero: {
     readonly subtitle: string;
@@ -126,6 +132,28 @@ export const siteContent = {
     title: "Yuphi — Daftar Harga Video Editor",
     description:
       "Yuphi (Shimazaki Miyu) — Video editor untuk konten Kecantikan, Makanan & Minuman, dan Gaya Hidup. Layanan editing bilingual dengan estetika K-vibe / Jepang.",
+    siteUrl: "https://yuphi.web.id",
+    keywords: [
+      "video editor",
+      "video editor Indonesia",
+      "freelance video editor",
+      "editor video",
+      "K-vibe video editor",
+      "Jepang aesthetic",
+      "beauty content editor",
+      "food and beverage video",
+      "lifestyle video editor",
+      "bilingual video editor",
+      "TikTok editor",
+      "Instagram Reels editor",
+      "Shimazaki Miyu",
+      "Yuphi",
+    ],
+    author: "Shimazaki Miyu",
+    twitterHandle: "@miyureiss20",
+    image: "/assets/og-image.png",
+    imageAlt:
+      "Yuphi — Portfolio Video Editor Shimazaki Miyu dengan estetika K-vibe / Jepang",
   },
   hero: {
     subtitle: "♡ PORTFOLIO VIDEO EDITOR ♡",
@@ -329,9 +357,9 @@ export const siteContent = {
         ],
         layout: "text-left",
         videos: [
-          { platform: "instagram", embedUrl: "" },
-          { platform: "tiktok", embedUrl: "" },
-          { platform: "instagram", embedUrl: "" },
+          { platform: "tiktok", embedUrl: "https://www.tiktok.com/embed/7625838235008257301" },
+          { platform: "tiktok", embedUrl: "https://www.tiktok.com/embed/7441522981282663688" },
+          { platform: "tiktok", embedUrl: "https://www.tiktok.com/embed/7616196063359241480" },
         ],
       },
       {
@@ -350,9 +378,9 @@ export const siteContent = {
         ],
         layout: "text-right",
         videos: [
-          { platform: "tiktok", embedUrl: "" },
-          { platform: "instagram", embedUrl: "" },
-          { platform: "tiktok", embedUrl: "" },
+          { platform: "tiktok", embedUrl: "https://www.tiktok.com/embed/7573309928048168212" },
+          { platform: "tiktok", embedUrl: "https://www.tiktok.com/embed/7618045836458593556" },
+          { platform: "tiktok", embedUrl: "https://www.tiktok.com/embed/7608234018705820949" },
         ],
       },
       {
@@ -375,9 +403,9 @@ export const siteContent = {
         ],
         layout: "text-center",
         videos: [
-          { platform: "instagram", embedUrl: "" },
-          { platform: "tiktok", embedUrl: "" },
-          { platform: "instagram", embedUrl: "" },
+          { platform: "tiktok", embedUrl: "https://www.tiktok.com/embed/7641425603232550151" },
+          { platform: "tiktok", embedUrl: "https://www.tiktok.com/embed/7642220027051101461" },
+          { platform: "tiktok", embedUrl: "https://www.tiktok.com/embed/7640568706506034453" },
         ],
       },
       {
@@ -400,10 +428,9 @@ export const siteContent = {
         ],
         layout: "text-center",
         videos: [
-          { platform: "tiktok", embedUrl: "" },
-          { platform: "instagram", embedUrl: "" },
-          { platform: "tiktok", embedUrl: "" },
-          { platform: "instagram", embedUrl: "" },
+          { platform: "tiktok", embedUrl: "https://www.tiktok.com/embed/7594711251763186951" },
+          { platform: "tiktok", embedUrl: "https://www.tiktok.com/embed/7643647370470657300" },
+          { platform: "tiktok", embedUrl: "https://www.tiktok.com/embed/7599349521746840853" },
         ],
       },
     ],
