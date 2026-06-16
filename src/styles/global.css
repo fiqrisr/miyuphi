@@ -117,6 +117,14 @@
   box-shadow: var(--shadow-card);
 }
 
+.glass-card {
+  background: rgb(255 255 255 / 35%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgb(255 255 255 / 45%);
+  box-shadow: var(--shadow-card);
+}
+
 .float-slow {
   animation: float-slow 7s ease-in-out infinite;
 }

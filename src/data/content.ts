@@ -498,7 +498,7 @@ export const siteContent = {
   kitchenSection: {
     heading: "More from the Kitchen",
     subtitle:
-      "Intip hasil edit terbaru, behind-the-scenes, dan moodboard langsung dari akun sosial media ✦",
+      "Intip hasil edit terbaru, behind-the-scenes, dan moodboard langsung dari akun media sosial ✦",
     accounts: [
       {
         platform: "tiktok",
