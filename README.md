@@ -1,46 +1,84 @@
-# Astro Starter Kit: Basics
+# Yuphi Portfolio Site
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+Single-page portfolio/pricing site for a freelance video editor. Built with **Astro**, **Tailwind CSS v4**, and **TypeScript**, package-managed with **pnpm**.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Tech Stack
 
-## 🚀 Project Structure
+- [Astro](https://astro.build/) — static site generator
+- [Tailwind CSS v4](https://tailwindcss.com/) — utility-first styling via `@tailwindcss/vite`
+- [TypeScript](https://www.typescriptlang.org/) — type safety
+- [pnpm](https://pnpm.io/) — package manager
 
-Inside of your Astro project, you'll see the following folders and files:
+## Commands
+
+All commands are run from the root of the project:
+
+| Command            | Action                                           |
+| :----------------- | :----------------------------------------------- |
+| `pnpm install`     | Install dependencies                             |
+| `pnpm run dev`     | Start the development server at `localhost:4321` |
+| `pnpm run build`   | Build a static production site to `./dist/`      |
+| `pnpm run preview` | Preview the production build locally             |
+| `pnpm astro check` | Run type checking and Astro diagnostics          |
+| `pnpm run format`  | Format all files with Prettier                   |
+
+## Project Structure
 
 ```text
 /
 ├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+│   └── assets/              # Static images, SVGs, OG image, favicon
+├── scripts/
+│   └── generate-favicon.py  # Favicon asset generator
+├── src/
+│   ├── components/          # Reusable UI components
+│   ├── data/
+│   │   └── content.ts       # All website copy, pricing, portfolio, order flow
+│   ├── layouts/
+│   │   └── layout.astro     # Base HTML shell, SEO, JSON-LD, fonts
+│   ├── pages/
+│   │   ├── index.astro      # Main landing page
+│   │   └── 404.astro        # Custom not-found page
+│   ├── partials/            # Page-section partials
+│   └── styles/
+│       └── global.css       # Tailwind v4 entry point, theme tokens, utilities
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Conventions
 
-## 🧞 Commands
+- **Naming style:** ALL files and directories use `kebab-case` (e.g. `order-flow.astro`, `pricing-tier.astro`).
+- **Component imports:** When importing kebab-case `.astro` files in frontmatter, alias them as PascalCase variables:
 
-All commands are run from the root of the project, from a terminal:
+  ```astro
+  ---
+  import OrderFlow from "../partials/order-flow.astro";
+  ---
+  ```
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+- **Copy source:** Keep long copy blocks in `src/data/content.ts`. Avoid hardcoding large content sections directly in `.astro` files.
+- **Tailwind v4 tokens:** Theme values are defined in `src/styles/global.css` via `@theme`. Reference them as CSS variables (e.g. `var(--color-sky-soft)`) or use mapped semantic classes like `bg-background`.
 
-## 👀 Want to learn more?
+## Design System
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Colors:**
+  - Sky soft: `#e5f1fb`
+  - Cloud white
+  - Navy deep: `#1e2a4a`
+  - Pink pastel: `#fad2e1`
+  - Yellow soft: `#fff4bd`
+  - Blue pale: `#d6ecff`
+- **Surfaces:** `glass` (72% white) and `glass-card` (35% white) with `backdrop-filter: blur(16px)`.
+- **Typography:**
+  - Body: **Nunito Sans**
+  - Headings: **Varela Round**
+- **Decorative motifs:** Floating clouds, stars, and Cinnamoroll-style cinnamon roll illustrations in `public/assets/`.
+- **Border radius:** `--radius-lg: 1.5rem`.
+
+## Content
+
+All website copy, order flow, pricing tiers, portfolio references, and section content live in `src/data/content.ts` and are imported by partials or components.
+
+## Deployment
+
+Run `pnpm run build` to generate a static site in `./dist/`, then deploy the `dist` folder to your preferred host.
